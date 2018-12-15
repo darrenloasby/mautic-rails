@@ -12,7 +12,7 @@ module Mautic
     end
 
     def add_do_not_contact(channel='email')
-      console.log(self)
+      puts(self)
       save if id.blank?
       Proxy.new(connection, "api/contacts/#{id}/dnc/#{channel}/add")
     end
