@@ -11,8 +11,11 @@ module Mautic
       "#{firstname} #{lastname}"
     end
 
-    def do_not_contact
-      Proxy.new(self, 'do_not_contact', default_params: { channel: 'email' })
+    def add_do_not_contact(channel='email')
+      self.save unlesss self.id
+      json = @connection.request(:post, "api/#{@endpoint}/#{id}/do_not_contact/#{channel}/add")
+      @last_response = json
+      @target.new(@connection, json[@endpoint.singularize])
     end
     
     def assign_attributes(source = nil)
