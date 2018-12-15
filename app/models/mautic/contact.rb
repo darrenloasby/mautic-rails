@@ -14,7 +14,7 @@ module Mautic
     def add_do_not_contact(channel='email')
       puts(self)
       save if id.blank?
-      Proxy.new(connection, "api/contacts/#{id}/dnc/#{channel}/add")
+      json = connection.request(:post, "api/contacts/#{id}/dnc/#{channel}/add")
     end
     
     def assign_attributes(source = nil)
