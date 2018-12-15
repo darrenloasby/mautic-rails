@@ -11,6 +11,10 @@ module Mautic
       "#{firstname} #{lastname}"
     end
 
+    def do_not_contact
+      Proxy.new(self, 'do_not_contact', default_params: { channel: 'email' })
+    end
+    
     def assign_attributes(source = nil)
       super
       self.attributes = {
