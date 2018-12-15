@@ -12,7 +12,7 @@ module Mautic
     end
 
     def add_do_not_contact(channel='email')
-      self.save unlesss self.id
+      self.save unless self.id
       json = @connection.request(:post, "api/#{@endpoint}/#{id}/do_not_contact/#{channel}/add")
       @last_response = json
       @target.new(@connection, json[@endpoint.singularize])
