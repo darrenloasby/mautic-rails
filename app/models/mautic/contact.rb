@@ -12,13 +12,9 @@ module Mautic
     end
 
     def add_do_not_contact(channel='email')
-      self.save unless self.id
-      json = connection.request(:post, "#{connection.url}/api/contacts/#{id}/dnc/#{channel}/add")
-    end
-    
-    def remove_do_not_contact(channel='email')
-      self.save unless self.id
-      json = connection.request(:post, "api/contacts/#{id}/dnc/#{channel}/remove")
+      console.log(self)
+      unless id save
+      json = connection.request(:post, "api/contacts/#{id}/dnc/#{channel}/add")
     end
     
     def assign_attributes(source = nil)
