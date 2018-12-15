@@ -13,7 +13,7 @@ module Mautic
 
     def add_do_not_contact(channel='email')
       puts(self)
-      save if id.blank?
+      #save if id.blank?
       connection.refresh!.request(:post, "api/contacts/#{id}/dnc/#{channel}/add")
     end
     
