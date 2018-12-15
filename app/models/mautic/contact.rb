@@ -13,7 +13,7 @@ module Mautic
 
     def add_do_not_contact(channel='email')
       self.save unless self.id
-      json = connection.request(:post, "api/contacts/#{id}/dnc/#{channel}/add")
+      json = connection.request(:post, "#{connection.url}/api/contacts/#{id}/dnc/#{channel}/add")
     end
     
     def remove_do_not_contact(channel='email')
